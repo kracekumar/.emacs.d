@@ -24,7 +24,7 @@
 ;;             (set (make-local-variable 'sgml-basic-offset) 4))
 ;;           (set (make-local-variable 'tab-width) 4))
 
-(prelude-ensure-module-deps '(column-marker multiple-cursors))
+(prelude-ensure-module-deps '(column-marker multiple-cursors auto-complete smex))
 
 (set-default-font "Monaco-14")
 
@@ -61,6 +61,7 @@
 ;; Autocomplete
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:complete-on-dot t)
+(add-hook 'python-mode-hook 'jedi:ac-setup)
 ;(add-hook 'after-init-hook 'company-mode)
 ;(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 ;(require 'auto-complete-config)
@@ -104,5 +105,14 @@
 ; open sudo files
 (require 'tramp)
 
-(setq load-path (cons "/usr/local/go/misc/emacs" load-path))
-(require 'go-mode-load)
+;; Activate smex
+(autoload 'smex "smex")
+(global-set-key (kbd "M-x") 'smex)
+
+;; ido
+(require 'ido)
+(ido-mode t)
+
+;;
+(add-hook 'prog-mode-hook 'flycheck-mode)
+(add-hook 'text-mode-hook 'flycheck-mode)
