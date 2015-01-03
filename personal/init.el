@@ -26,8 +26,8 @@
 
 (set-default-font "Monaco-14")
 
-;(disable-theme 'zenburn)
-;(load-theme 'monokai)
+;; (disable-theme 'zenburn)
+(load-theme 'sanityinc-tomorrow-eighties)
 
 (setq pop-up-windows nil)
 (setq use-dialog-box nil)
@@ -110,13 +110,11 @@
 ;; ido
 (require 'ido)
 (ido-mode t)
-
+(setq flx-ido-threshold 1000)
 ;;
 (add-hook 'prog-mode-hook 'flycheck-mode)
 (add-hook 'text-mode-hook 'flycheck-mode)
 
-;; Emacs excercise
-(message "Welcome H$ck3r")
 
 ;; Enable projectile mode
 (projectile-global-mode)
@@ -219,9 +217,25 @@ $ autoflake --remove-all-unused-imports -i unused_imports.py"
 (require 'pymacs)
 (pymacs-load "ropemacs" "rope-")
 
-
+;; Rope autoimport
 (setq ropemacs-enable-autoimport 't)
 (setq ropemacs-autoimport-modules '("os" "shutil" "django" "requests" "recruiterbox.*"))
 
+;; sphinx docs mode
+(add-hook 'python-mode-hook (lambda ()
+                              (require 'sphinx-doc)
+                              (sphinx-doc-mode t)))
 ;; ;; Full screen
 (toggle-frame-fullscreen)
+
+;; Add django-model.el
+
+(load-file "~/.emacs.d/personal/python-django.el")
+(require 'python-django)
+
+;; Django Pony Mode
+(add-to-list 'load-path "~/code/pony-mode/src")
+(require 'pony-mode)
+
+;; Add emmet mode
+(require 'emmet-mode)
