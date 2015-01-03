@@ -19,3 +19,5 @@ savefile/
 projectile-bookmarks.eld
 session*
 .cask
+tramp
+/var/pcache
