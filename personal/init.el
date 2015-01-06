@@ -29,8 +29,6 @@
 (set-default-font "Monaco-14")
 
 ;; (disable-theme 'zenburn)
-;; (load-theme 'monokai)
-
 (load-theme 'sanityinc-tomorrow-eighties)
 
 (setq pop-up-windows nil)
@@ -229,7 +227,6 @@
 (add-hook 'python-mode-hook (lambda ()
                               (require 'sphinx-doc)
                               (sphinx-doc-mode t)))
-
 
 ;; Add django-model.el
 
